@@ -25,7 +25,11 @@
 </div> -->
 
 <div class="card" style="width: 24rem;">
-  <img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="...">
+  @if (product.img) {
+    <img [src]="product.img" class="card-img-top" alt="...">
+  }@else{
+    <img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="...">
+  }
   <div class="card-body">
     <h4 class="card-title text-center">{{product.name}}</h4>
     @if (product.synopsis) {
@@ -33,6 +37,6 @@
     }
     <h5 class="card-title text-center">{{product.price}}</h5>
 
-      <a href="/product/{{product.id}}" class="btn btn-primary">Voir</a>
+      <a href="/product/{{product.id}}" class="btn button">Voir</a>
   </div>
 </div>

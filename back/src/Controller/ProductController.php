@@ -140,6 +140,7 @@ class ProductController extends AbstractController
                         new OA\Property(property:"price", type:"decimal"),
                         new OA\Property(property:"synopsis", type:"string"),
                         new OA\Property(property:"duration", type:"time"),
+                        new OA\Property(property:"img", type:"string"),
                     ]
                 )
             ),

@@ -1,0 +1,15 @@
+.image{
+  width: 400px;
+  height: 600px;
+
+}
+
+.button{
+  background-color: rgb(58, 139, 201);
+  color: white;
+}
+
+.button:hover{
+  background-color: red;
+  color: white;
+}

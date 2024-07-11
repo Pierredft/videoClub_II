@@ -8,4 +8,5 @@ export default interface Product {
   price: number;
   synopsis: string;
   duration: Date;
+  img: string;
 }
