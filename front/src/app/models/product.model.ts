@@ -1,4 +1,4 @@
-import { Time } from "@angular/common";
+import { DatePipe, Time } from "@angular/common";
 
 export default interface Product {
   id: number;
@@ -7,5 +7,5 @@ export default interface Product {
   director: string;
   price: number;
   synopsis: string;
-  duration: Time;
+  duration: Date;
 }

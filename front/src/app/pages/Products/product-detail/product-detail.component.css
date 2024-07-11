@@ -1,0 +1,17 @@
+.cast{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+}
+
+.detailSize{
+  width: 80%;
+}
+
+.detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
