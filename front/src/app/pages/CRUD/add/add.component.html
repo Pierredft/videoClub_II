@@ -1,0 +1,46 @@
+<p>add works!</p>
+
+<!-- Formulaire avec liaison bidirectionnelle et gestion de la soumission -->
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+
+    @if (submitted && form['name'].invalid) {
+      <span>
+        @if (!form['name'].value) {
+          <span>
+            * Nom obligatoire
+          </span>
+        }
+        @if (form['name'].hasError('minlenght')) {
+          <span>
+            * Le nom doit contenir au moins 3 caractères
+          </span>
+        }
+      </span>
+    }
+  </div>
+<div class="form-group">
+  <label for="actor">Actor</label>
+  <input type="text" class="form-control" id="actor" formControlName="actor">
+</div>
+  <div class="form-group">
+    <label for="director">Director</label>
+    <input type="text" class="form-control" id="director" formControlName="director">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="decimal" class="form-control" id="price" formControlName="price">
+  </div>
+  <div class="form-group">
+    <label for="synopsis">Synopsis</label>
+    <input type="text" class="form-control" id="synopsis" formControlName="synopsis">
+  </div>
+  <div class="form-group">
+    <label for="img">Image</label>
+    <input type="text" class="form-control" id="img" formControlName="img">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

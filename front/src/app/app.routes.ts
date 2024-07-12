@@ -5,6 +5,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { ProductsComponent } from './pages/Products/products.component';
 import { ProductDetailComponent } from './pages/Products/product-detail/product-detail.component';
 import { PanelComponent } from './pages/CRUD/panel/panel.component';
+import { AddComponent } from './pages/CRUD/add/add.component';
 
 
 
@@ -19,6 +20,8 @@ export const routes: Routes = [
   {path: 'product/:id', component: ProductDetailComponent},
 
   {path: 'panel', component: PanelComponent},
+
+  {path: 'addProduct', component: AddComponent},
 
   {path:'**', component: NotFoundComponent},
 ];

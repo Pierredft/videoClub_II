@@ -7,27 +7,31 @@ import Product from '../models/product.model';
   providedIn: 'root'
 })
 export class ProductService {
+  // post(value: any) {
+  //   throw new Error('Method not implemented.');
+  // }
 
-  private apiUrl = 'http://localhost:8000/api';
-  constructor(private htppClient:HttpClient) { }
+  private apiUrl = 'http://127.0.0.1:8000/api';
+  constructor(private httpClient:HttpClient) { }
 
   getProducts() : Observable<Product[]>{
-    return this.htppClient.get<Product[]>(`${this.apiUrl}/product`);
+    return this.httpClient.get<Product[]>(`${this.apiUrl}/product`);
   }
 
   getProduct(id: number) : Observable<Product>{
-    return this.htppClient.get<Product>(`${this.apiUrl}/product/${id}`);
+    return this.httpClient.get<Product>(`${this.apiUrl}/product/${id}`);
   }
 
   addProduct(product: Product) : Observable<Product>{
-    return this.htppClient.post<Product>(`${this.apiUrl}/product/`, product);
-  }
+    return this.httpClient.post<Product>(`${this.apiUrl}/product`, product);
+}
 
   updateProduct(product: Product) : Observable<Product>{
-    return this.htppClient.put<Product>(`${this.apiUrl}/product/${product.id}`, product);
+    return this.httpClient.put<Product>(`${this.apiUrl}/product/${product.id}`, product);
   }
 
   deleteProduct(id: number) : Observable<Product>{
-    return this.htppClient.delete<Product>(`${this.apiUrl}/product/${id}`);
+    return this.httpClient.delete<Product>(`${this.apiUrl}/product/${id}`);
   }
+
 }

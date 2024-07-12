@@ -7,6 +7,6 @@ export default interface Product {
   director: string;
   price: number;
   synopsis: string;
-  duration: Date;
+  // duration: Date;
   img: string;
 }

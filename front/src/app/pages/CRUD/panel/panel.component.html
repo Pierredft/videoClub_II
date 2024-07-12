@@ -1,4 +1,4 @@
-<p>panel works!</p>
+
 <!-- <div>
   @for (product of products; track $index) {
 <div class="card" style="width: 24rem;">
@@ -23,6 +23,7 @@
     <app-product-card [product]="item"></app-product-card>
   }
 </div> -->
+<button class="btn btnAdd">Ajouter</button>
 @for (product of products; track $index) {
 <table class="table table-striped">
   <thead>
@@ -71,7 +72,10 @@
         </div>
       </td>
       <td>{{product.price}} €</td>
-      <td><button class="btn btnDelete" (click)="deleteProduct(product.id)">Supprimer</button></td>
+      <td>
+        <button class="btn btnUpdate me-2">Modifier</button>
+        <button class="btn btnDelete" (click)="deleteProduct(product.id)">Supprimer</button>
+      </td>
     </tr>
   </tbody>
 </table>

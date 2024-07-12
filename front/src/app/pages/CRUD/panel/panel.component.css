@@ -11,3 +11,21 @@
 .btnDelete:hover{
   background-color: #a10000;
 }
+
+.btnUpdate{
+  background-color: orange;
+  color: white;
+}
+
+.btnUpdate:hover{
+  background-color: rgb(164, 108, 2);
+}
+
+.btnAdd{
+  background-color: rgb(0, 193, 0);
+  color: white;
+}
+
+.btnAdd:hover{
+  background-color: green;
+}
