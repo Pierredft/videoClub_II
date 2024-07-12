@@ -1,0 +1,78 @@
+<p>panel works!</p>
+<!-- <div>
+  @for (product of products; track $index) {
+<div class="card" style="width: 24rem;">
+  @if (product.img) {
+    <img [src]="product.img" class="card-img-top" alt="...">
+  }@else{
+    <img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="...">
+  }
+  <div class="card-body">
+    <h4 class="card-title text-center">{{product.name}}</h4>
+    @if (product.synopsis) {
+      <p class="card-muted">{{product.synopsis | slice: 0:140}}</p>
+    }
+    <h5 class="card-title text-center">{{product.price}}</h5>
+
+      <a href="/product/{{product.id}}" class="btn button">Voir</a>
+  </div>
+</div>
+} -->
+<!-- <div>
+  @for (item of products; track $index) {
+    <app-product-card [product]="item"></app-product-card>
+  }
+</div> -->
+@for (product of products; track $index) {
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Actor</th>
+      <th scope="col">Director</th>
+      <th scope="col">Synopsis</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{product.id}}</th>
+      @if (product.img) {
+        <td class="image"><img [src]="product.img" class="card-img-top" alt="..."></td>
+      }@else{
+        <td><img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="..."></td>
+      }
+      <td>{{product.name}}</td>
+      <td>{{product.actor}}</td>
+      <td>{{product.director}}</td>
+      <td>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Voir le synopsis
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                {{product.synopsis}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>{{product.price}} €</td>
+      <td><button class="btn btnDelete" (click)="deleteProduct(product.id)">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
+}

@@ -1,0 +1,13 @@
+.image{
+  width: 25px;
+  height: auto;
+}
+
+.btnDelete{
+  background-color: #ff0000;
+  color: white;
+}
+
+.btnDelete:hover{
+  background-color: #a10000;
+}

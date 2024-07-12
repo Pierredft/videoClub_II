@@ -13,13 +13,14 @@ import { DatePipe } from '@angular/common';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent {
-  detail!: Product;
+  detail!: Product; // sert à déclarer une variable sans l'initialiser
 
+  // permet de récupérer les données de l'API
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
+    private router: Router, // permet de naviguer entre les pages
+    private route: ActivatedRoute, // permet de récupérer les paramètres de l'URL
 
-    private productService: ProductService,
+    private productService: ProductService, // permet de récupérer les données de l'API
   ) {}
 
   private subscribeProduct(id:number) :void {

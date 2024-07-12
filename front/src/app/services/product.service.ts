@@ -27,7 +27,7 @@ export class ProductService {
     return this.htppClient.put<Product>(`${this.apiUrl}/product/${product.id}`, product);
   }
 
-  delateProduct(id: number) : Observable<Product>{
+  deleteProduct(id: number) : Observable<Product>{
     return this.htppClient.delete<Product>(`${this.apiUrl}/product/${id}`);
   }
 }
