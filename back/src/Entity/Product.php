@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -14,31 +15,43 @@ class Product
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['products'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['products'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['products'])]
     private ?string $actor = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['products'])]
     private ?string $director = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[Groups(['products'])]
     private ?string $price = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['products'])]
     private ?string $synopsis = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $duration = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['products'])]
     private ?string $img = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['products'])]
     private ?bool $popular = null;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[Groups(['products'])]
+    private ?Format $format = null;
 
     public function getId(): ?int
     {
@@ -137,6 +150,18 @@ class Product
     public function setPopular(?bool $popular): static
     {
         $this->popular = $popular;
+
+        return $this;
+    }
+
+    public function getFormat(): ?Format
+    {
+        return $this->format;
+    }
+
+    public function setFormat(?Format $format): static
+    {
+        $this->format = $format;
 
         return $this;
     }

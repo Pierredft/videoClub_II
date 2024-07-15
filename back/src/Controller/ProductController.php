@@ -19,6 +19,7 @@ use Symfony\Contracts\Cache\TagAwareCacheInterface;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use App\Repository\AuthorRepository;
+use App\Repository\FormatRepository;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -40,7 +41,7 @@ class ProductController extends AbstractController
     public function getProduct(ProductRepository $productRepository, SerializerInterface $serializer, Request $request, TagAwareCacheInterface $cache): JsonResponse
     {
         $product = $productRepository->findAll();
-        $jsonProduct = $serializer->serialize($product, 'json');
+        $jsonProduct = $serializer->serialize($product, 'json', ['groups' => 'products']);
         return new JsonResponse($jsonProduct, Response::HTTP_OK,[], true);
     }
 
@@ -56,7 +57,7 @@ class ProductController extends AbstractController
     #[Route('/api/product/{id}', name: 'detailProduct', methods: ['GET'])]
     public function getDetailProduct(SerializerInterface $serializer, Product $product): JsonResponse
     {
-            $jsonProduct = $serializer->serialize($product,'json');
+            $jsonProduct = $serializer->serialize($product,'json', ['groups' => 'products']);
             return new JsonResponse($jsonProduct, Response::HTTP_OK, ['accept' => 'json'], true);
     }
 
@@ -89,15 +90,19 @@ class ProductController extends AbstractController
         ]
     )]
     #[OA\Tag(name:"Product")]
-        public function createProduct(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator): JsonResponse
+        public function createProduct(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator, FormatRepository $formatRepository): JsonResponse
         {
             $product = $serializer->deserialize($request->getContent(), Product::class,'json');
             $content = $request->toArray();
 
+            $idFormat = $content['idFormat'] ?? -1;
+
+            $product->setFormat($formatRepository->find($idFormat));
+
             $em->persist($product);
             $em->flush();
 
-            $jsonProduct = $serializer->serialize($product,'json');
+            $jsonProduct = $serializer->serialize($product,'json', ['groups' => 'products']);
 
             $location = $urlGenerator->generate('detailProduct', ['id' => $product->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
 
@@ -141,6 +146,7 @@ class ProductController extends AbstractController
                         new OA\Property(property:"synopsis", type:"string"),
                         new OA\Property(property:"duration", type:"time"),
                         new OA\Property(property:"img", type:"string"),
+                        // new OA\Property(property:"format", type:"string"),
                     ]
                 )
             ),
@@ -155,11 +161,14 @@ class ProductController extends AbstractController
         ]
     )]
     #[OA\Tag(name: 'Product')]
-        public function updateProduct(Request $request, SerializerInterface $serializer, Product $currentProduct, EntityManagerInterface $em): JsonResponse
+        public function updateProduct(Request $request, SerializerInterface $serializer, Product $currentProduct, EntityManagerInterface $em, FormatRepository $formatRepository): JsonResponse
         {
             $updateProduct = $serializer->deserialize($request->getContent(), Product::class,'json',[AbstractNormalizer::OBJECT_TO_POPULATE => $currentProduct]);
 
             $content = $request->toArray();
+            $idFormat = $content['idFormat'] ?? -1;
+
+            $updateProduct->setFormat($formatRepository->find($idFormat));
             
             $em->persist($updateProduct);
             $em->flush();
