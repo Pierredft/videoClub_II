@@ -42,18 +42,4 @@ export class AddComponent {
   public get form() {
     return this.productForm.controls;
   }
-
-  // ngOnInit(): void {
-  //   // Initialize the form
-  //   this.productForm = this.formBuilder.group({
-  //     name: ['', [Validators.minLength(2), Validators.required]],
-  //     actor: ['', [Validators.required]],
-  //     director: ['', [Validators.required]],
-  //     price: ['', [Validators.required]],
-  //     synopsis: ['', [Validators.required]],
-  //     img: ['', [Validators.required]],
-  //   });
-  // }
-
-
     }

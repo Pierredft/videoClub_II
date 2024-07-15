@@ -14,7 +14,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PanelComponent {
   products: Product[] = [];
-
   // languages: Language[] = [];
 
   constructor(

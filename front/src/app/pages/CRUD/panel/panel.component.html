@@ -23,9 +23,9 @@
       }@else{
         <td><img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="..."></td>
       }
-      <td class="text-center">{{product.name}}</td>
-      <td class="text-center">{{product.actor}}</td>
-      <td class="text-center">{{product.director}}</td>
+      <td class="text-center">{{product.name | slice: 0:7}}</td>
+      <td class="text-center">{{product.actor | slice: 0:10}}</td>
+      <td class="text-center">{{product.director | slice: 0:10}}</td>
       <td>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -51,7 +51,7 @@
       <td>{{product.price}} €</td>
       <td>
         <div class="posButton">
-          <button class="btn btnUpdate mb-2">Modifier</button>
+          <a href="/updateProduct/{{product.id}}" class="btn btnUpdate mb-2">Modifier</a>
           <button class="btn btnDelete" (click)="deleteProduct(product.id)">Supprimer</button>
         </div>
       </td>
