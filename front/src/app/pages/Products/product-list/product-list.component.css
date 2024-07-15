@@ -1,0 +1,19 @@
+.cardAlign {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+  .cardAlign {
+    flex-direction: column;
+  }
+}
+
+/* @media (max-width: 1300px) {
+  .cardAlign {
+    flex-direction: column;
+  }
+} */

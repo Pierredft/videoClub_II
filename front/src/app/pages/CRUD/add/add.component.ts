@@ -13,12 +13,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent {
   productForm: FormGroup = this.formBuilder.group({
-    name: ['test', [Validators.minLength(2), Validators.required]],
-    actor: ['test', [Validators.required]],
-    director: ['test', [Validators.required]],
-    price: ['15.54', [Validators.required]],
-    synopsis: ['test', [Validators.required]],
-    img: ['test', [Validators.required]],
+    name: ['', [Validators.minLength(2), Validators.required]],
+    actor: ['', [Validators.required]],
+    director: ['', [Validators.required]],
+    price: ['', [Validators.required]],
+    synopsis: ['', [Validators.required]],
+    img: ['', [Validators.required]],
   })
 
   submitted: boolean = false;

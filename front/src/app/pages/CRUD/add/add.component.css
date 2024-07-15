@@ -1,0 +1,25 @@
+.btnPanel{
+  background-color: rgb(0, 193, 0);
+  color: white;
+  padding: 10px 40px;
+}
+
+.btnPanel:hover{
+  background-color: green;
+}
+
+.btnCenter{
+  display: flex;
+  justify-content: center;
+}
+
+.formSize{
+  width: 80%;
+}
+
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

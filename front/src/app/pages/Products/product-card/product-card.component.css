@@ -7,9 +7,26 @@
 .button{
   background-color: rgb(58, 139, 201);
   color: white;
+  padding: 10px 40px;
 }
 
 .button:hover{
   background-color: red;
   color: white;
+}
+
+.card{
+  width: 400px;
+  height: 650px;
+  margin-bottom: 20px;
+}
+
+.image{
+  width: auto;
+  height: 500px;
+}
+
+.btnCenter{
+  display: flex;
+  justify-content: center;
 }

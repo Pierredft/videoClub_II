@@ -1,11 +1,13 @@
-<p>add works!</p>
+<div class="btnCenter mt-5 mb-5">
+  <a href="/panel" class="btn btnPanel text-align">Retour au panel admin</a>
+</div>
 
 <!-- Formulaire avec liaison bidirectionnelle et gestion de la soumission -->
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" formControlName="name">
-
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="formSize">
+  <div class="form-group mb-3">
+    <label for="name" class="fw-bolder">Name:</label>
+    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Star Wars">
     @if (submitted && form['name'].invalid) {
       <span>
         @if (!form['name'].value) {
@@ -21,26 +23,28 @@
       </span>
     }
   </div>
-<div class="form-group">
-  <label for="actor">Actor</label>
-  <input type="text" class="form-control" id="actor" formControlName="actor">
+<div class="form-group mb-3">
+  <label for="actor" class="fw-bolder">Actor:</label>
+  <input type="text" class="form-control" id="actor" formControlName="actor" placeholder="Ewan McGregor">
 </div>
-  <div class="form-group">
-    <label for="director">Director</label>
-    <input type="text" class="form-control" id="director" formControlName="director">
+  <div class="form-group mb-3">
+    <label for="director" class="fw-bolder">Director:</label>
+    <input type="text" class="form-control" id="director" formControlName="director" placeholder="Georges Lucas">
   </div>
-  <div class="form-group">
-    <label for="price">Price</label>
-    <input type="decimal" class="form-control" id="price" formControlName="price">
+  <div class="form-group mb-3">
+    <label for="price" class="fw-bolder">Price:</label>
+    <input type="decimal" class="form-control" id="price" formControlName="price" placeholder="15.99">
   </div>
-  <div class="form-group">
-    <label for="synopsis">Synopsis</label>
-    <input type="text" class="form-control" id="synopsis" formControlName="synopsis">
+  <div class="form-group mb-3">
+    <label for="synopsis" class="fw-bolder">Synopsis:</label>
+    <input type="text" class="form-control" id="synopsis" formControlName="synopsis" placeholder="Synopsis du film">
   </div>
-  <div class="form-group">
-    <label for="img">Image</label>
-    <input type="text" class="form-control" id="img" formControlName="img">
+  <div class="form-group mb-3">
+    <label for="img" class="fw-bolder">Image:</label>
+    <input type="text" class="form-control" id="img" formControlName="img" placeholder="https://musicart.xboxlive.com/7/67325100-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-
+  <div class="btnCenter">
+  <button type="submit" class="btn btn-primary">Créer le film</button>
+  </div>
+  </div>
 </form>

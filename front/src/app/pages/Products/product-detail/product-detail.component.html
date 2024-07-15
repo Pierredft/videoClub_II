@@ -1,20 +1,23 @@
-@if (detail) {
-<div class="detail">
-<div class="detailSize">
-  @if (detail.img) {
-    <img [src]="detail.img" class="card-img-top" alt="...">
-  }@else{
-    <img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="...">
-  }<div>
-  <h1 class="text-center">{{detail.name}}</h1>
-  <div class="cast">
-    <h2 class="me-5">{{detail.actor}}</h2>
-    <h2>{{detail.director}}</h2>
+<div class="btnCenter mt-5 mb-5">
+  <a href="/product" class="btn button text-align">Retour à la liste des films</a>
+</div>
+
+<div class="posDetail">
+  <div class="size">
+    @if (detail) {
+      <div class="posImg">
+        @if (detail.img) {
+            <img [src]="detail.img" class="card-img-top image" alt="...">
+          }@else{
+            <img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="...">
+          }
+      </div>
+      <h1 class="text-center mt-3">{{detail.name}}</h1>
+        <h2 class="text-center"><em class="bold">Acteurs:</em> {{detail.actor}}</h2>
+        <h2 class="text-center"><em class="bold">Producteurs:</em> {{detail.director}}</h2>
+      <p class="fs-4 text">{{detail.synopsis}}</p>
+      <p class="fs-1 text-center price">{{detail.price}} €</p>
+      <!-- <p>{{detail.duration | date: "hh:mm:ss"}}</p> -->
+    }
   </div>
 </div>
-<p class="fs-4">{{detail.synopsis}}</p>
-<p class="fs-1 text-center">{{detail.price}} €</p>
-<!-- <p>{{detail.duration | date: "hh:mm:ss"}}</p> -->
-</div>
-</div>
-}

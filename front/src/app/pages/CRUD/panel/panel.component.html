@@ -1,29 +1,6 @@
-
-<!-- <div>
-  @for (product of products; track $index) {
-<div class="card" style="width: 24rem;">
-  @if (product.img) {
-    <img [src]="product.img" class="card-img-top" alt="...">
-  }@else{
-    <img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="...">
-  }
-  <div class="card-body">
-    <h4 class="card-title text-center">{{product.name}}</h4>
-    @if (product.synopsis) {
-      <p class="card-muted">{{product.synopsis | slice: 0:140}}</p>
-    }
-    <h5 class="card-title text-center">{{product.price}}</h5>
-
-      <a href="/product/{{product.id}}" class="btn button">Voir</a>
-  </div>
+<div class="btnCenter mt-5 mb-5">
+  <a href="/addProduct" class="btn btnAdd text-align">Ajouter un film</a>
 </div>
-} -->
-<!-- <div>
-  @for (item of products; track $index) {
-    <app-product-card [product]="item"></app-product-card>
-  }
-</div> -->
-<button class="btn btnAdd">Ajouter</button>
 @for (product of products; track $index) {
 <table class="table table-striped">
   <thead>
@@ -46,9 +23,9 @@
       }@else{
         <td><img src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png" class="card-img-top" alt="..."></td>
       }
-      <td>{{product.name}}</td>
-      <td>{{product.actor}}</td>
-      <td>{{product.director}}</td>
+      <td class="text-center">{{product.name}}</td>
+      <td class="text-center">{{product.actor}}</td>
+      <td class="text-center">{{product.director}}</td>
       <td>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -73,8 +50,10 @@
       </td>
       <td>{{product.price}} €</td>
       <td>
-        <button class="btn btnUpdate me-2">Modifier</button>
-        <button class="btn btnDelete" (click)="deleteProduct(product.id)">Supprimer</button>
+        <div class="posButton">
+          <button class="btn btnUpdate mb-2">Modifier</button>
+          <button class="btn btnDelete" (click)="deleteProduct(product.id)">Supprimer</button>
+        </div>
       </td>
     </tr>
   </tbody>
