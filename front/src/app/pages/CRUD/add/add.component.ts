@@ -19,6 +19,7 @@ export class AddComponent {
     price: ['', [Validators.required]],
     synopsis: ['', [Validators.required]],
     img: ['', [Validators.required]],
+    popular: [false, [Validators.required]]
   })
 
   submitted: boolean = false;

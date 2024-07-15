@@ -34,6 +34,7 @@ constructor(
     director: ['', [Validators.required]],
     price: ['', [Validators.required]],
     synopsis: ['', [Validators.required]],
+    popular: ['', [Validators.required]],
     img: ['', [Validators.required]],
   });
 }
@@ -47,6 +48,7 @@ ngOnInit(): void {
       director: product.director,
       price: product.price,
       synopsis: product.synopsis,
+      popular: product.popular,
       img: product.img
     });
   });

@@ -9,4 +9,5 @@ export default interface Product {
   synopsis: string;
   // duration: Date;
   img: string;
+  popular: boolean;
 }

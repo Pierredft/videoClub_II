@@ -12,6 +12,7 @@
       <th scope="col">Director</th>
       <th scope="col">Synopsis</th>
       <th scope="col">Price</th>
+      <th scope="col">boolean</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -49,6 +50,7 @@
         </div>
       </td>
       <td>{{product.price}} €</td>
+      <td>{{product.popular}}</td>
       <td>
         <div class="posButton">
           <a href="/updateProduct/{{product.id}}" class="btn btnUpdate mb-2">Modifier</a>

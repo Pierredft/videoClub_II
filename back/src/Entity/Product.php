@@ -37,6 +37,9 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $img = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $popular = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +125,18 @@ class Product
     public function setImg(string $img): static
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    public function isPopular(): ?bool
+    {
+        return $this->popular;
+    }
+
+    public function setPopular(?bool $popular): static
+    {
+        $this->popular = $popular;
 
         return $this;
     }

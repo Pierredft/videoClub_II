@@ -1,6 +1,6 @@
 import { ProductCardComponent } from './../../Products/product-card/product-card.component';
 import { SlicePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import Product from '../../../models/product.model';
 import { ProductService } from '../../../services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.css'
 })
-export class PanelComponent {
+export class PanelComponent implements OnInit {
   products: Product[] = [];
   // languages: Language[] = [];
 
