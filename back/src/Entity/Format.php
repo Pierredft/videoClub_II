@@ -24,7 +24,7 @@ class Format
     /**
      * @var Collection<int, Product>
      */
-    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'format')]
+    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'format', cascade: ['persist', 'remove'])]
     private Collection $products;
 
     public function __construct()

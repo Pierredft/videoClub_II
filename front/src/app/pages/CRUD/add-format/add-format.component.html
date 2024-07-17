@@ -1,0 +1,31 @@
+<!-- <div class="btnCenter mt-5 mb-5">
+  <a href="/panel" class="btn btnPanel text-align">Retour au panel admin</a>
+</div> -->
+
+<!-- Formulaire avec liaison bidirectionnelle et gestion de la soumission -->
+<form [formGroup]="formatForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="formSize">
+  <div class="form-group mb-3">
+    <label for="name" class="fw-bolder">Name:</label>
+    <input type="text" class="form-control" id="name" formControlName="name" placeholder="DVD">
+    @if (submitted && form['name'].invalid) {
+      <span>
+        @if (!form['name'].value) {
+          <span>
+            * Nom obligatoire
+          </span>
+        }
+        @if (form['name'].hasError('minlenght')) {
+          <span>
+            * Le nom doit contenir au moins 3 caractères
+          </span>
+        }
+      </span>
+    }
+  </div>
+  <div class="btnCenter">
+  <button type="submit" class="btn btn-primary">Créer le format</button>
+  </div>
+  </div>
+</form>
+
