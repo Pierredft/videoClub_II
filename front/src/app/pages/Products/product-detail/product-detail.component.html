@@ -15,7 +15,9 @@
       <h1 class="text-center mt-3">{{detail.name}}</h1>
         <h2 class="text-center"><em class="bold">Acteurs:</em> {{detail.actor}}</h2>
         <h2 class="text-center"><em class="bold">Producteurs:</em> {{detail.director}}</h2>
+        @if (detail.format) {
         <h2 class="text-center"><em class="bold">Format:</em> {{detail.format.name}}</h2>
+        }
       <p class="fs-4 text">{{detail.synopsis}}</p>
       <p class="fs-1 text-center price">{{detail.price}} €</p>
       <!-- <p>{{detail.duration | date: "hh:mm:ss"}}</p> -->

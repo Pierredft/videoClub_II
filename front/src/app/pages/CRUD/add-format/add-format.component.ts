@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormatService } from '../../../services/format.service';
+import { Router } from '@angular/router'; // Import the Router module
 
 @Component({
   selector: 'app-add-format',
@@ -15,7 +16,7 @@ export class AddFormatComponent {
   })
 
   submitted: boolean = false;
-  constructor(private FormBuilder: FormBuilder, private format: FormatService){}
+  constructor(private FormBuilder: FormBuilder, private format: FormatService, private router: Router){} // Inject the Router module
 
 
   private addFormat(): void {
@@ -29,6 +30,7 @@ export class AddFormatComponent {
     console.log(this.formatForm.value);
     if (this.formatForm.valid) {
       this.addFormat();
+      this.router.navigate(['/panel/format']);
     }
   }
 

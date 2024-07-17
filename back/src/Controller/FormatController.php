@@ -98,15 +98,22 @@ class FormatController extends AbstractController
         ]
     )]
     #[OA\Tag(name:"Format")]
-        public function createFormat(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator): JsonResponse
+        public function createFormat(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator, FormatRepository $formatRepository): JsonResponse
         {
-            $format = $serializer->deserialize($request->getContent(), Format::class,'json');
             $content = $request->toArray();
+            $name = $content['name'];
+
+            $existingFormat = $formatRepository->findOneBy(['name' => $name]);
+            if ($existingFormat) {
+                return new JsonResponse(['error' => 'Format already exists'], Response::HTTP_BAD_REQUEST);
+            }
+
+            $format = $serializer->deserialize($request->getContent(), Format::class, 'json');
 
             $em->persist($format);
             $em->flush();
 
-            $jsonFormat = $serializer->serialize($format,'json', ['groups' => 'products']);
+            $jsonFormat = $serializer->serialize($format, 'json', ['groups' => 'products']);
 
             $location = $urlGenerator->generate('detailFormat', ['id' => $format->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
 
@@ -180,7 +187,7 @@ class FormatController extends AbstractController
             )
         )]
         #[OA\Tag(name: 'Format')]
-    #[Route('/api/Format/{id}', name: 'deleteFormat', methods: ['DELETE'])]
+    #[Route('/api/format/{id}', name: 'deleteFormat', methods: ['DELETE'])]
     public function deleteFormat(Format $format, EntityManagerInterface $em): JsonResponse
     {
         $em->remove($format);

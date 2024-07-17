@@ -18,7 +18,6 @@ export class PanelFormatComponent  {
     private router: Router,
     private route: ActivatedRoute,
   ){}
-
   ngOnInit(): void {
     this.FormatService.getFormats().subscribe((response) => {this.formats = response, console.log(response)});
     const id = this.route.snapshot.paramMap.get('id');

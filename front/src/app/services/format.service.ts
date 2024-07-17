@@ -27,6 +27,6 @@ export class FormatService {
   }
 
   deleteFormat(id: number) : Observable<Format>{
-    return this.httpClient.delete<Format>(`${this.apiUrl}/Format/${id}`);
+    return this.httpClient.delete<Format>(`${this.apiUrl}/format/${id}`);
   }
 }

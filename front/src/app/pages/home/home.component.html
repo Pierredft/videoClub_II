@@ -2,21 +2,29 @@
 <img class="img-fluid imgBan" src="https://www.cia-france.fr/media/1492/les-films-incontournables-du-cinema-w_2524x884.jpg" alt="">
 <h4 class="fs-4 text-center mt-2 ms-2 me-2">Films, Séries peut importe ce que vous voulez ou le format que vous souhaité chez Movie's Verse nous avons ce qu'il vous de la VHS au DVD en passant par le format USB.</h4>
 
-
-@for (product of products; track $index) {
-  @if (product.popular == true) {
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="{{ product.img }}" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <a href="/product/{{ product.id }}" class="btn btn-primary">Voir le produit</a>
-          </div>
-        </div>
+<div class="pos">
+<div id="carouselExampleIndicators" class="carousel slide size">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    @for (product of products; track $index) {
+      @if (product.popular == true) {
+      <div class="carousel-item active">
+        <img src="{{product.img}}" class="d-block w-100" alt="...">
+        <button class="boutton btn btn-dark"><a class="font" href="/product/{{product.id}}">voir le film</a></button>
       </div>
-    </div>
+    }
   }
-}
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>

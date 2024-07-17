@@ -12,3 +12,24 @@
     margin: 0 auto;
   }
 
+.size{
+  width: 25%;
+}
+
+.pos{
+  display: flex;
+  justify-content: center;
+}
+
+.boutton{
+  position: absolute;
+  object-fit: fill;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* width: 100%; */
+}
+
+.font{
+  text-decoration: none;
+}

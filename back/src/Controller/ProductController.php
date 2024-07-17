@@ -90,20 +90,24 @@ class ProductController extends AbstractController
         ]
     )]
     #[OA\Tag(name:"Product")]
-        public function createProduct(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator, FormatRepository $formatRepository): JsonResponse
+        public function createProduct(ProductRepository $productRepository ,Request $request, SerializerInterface $serializer, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator, FormatRepository $formatRepository): JsonResponse
         {
-            $product = $serializer->deserialize($request->getContent(), Product::class,'json');
             $content = $request->toArray();
+            $productName = $content['name'] ?? '';
 
+            $existingProduct = $productRepository->findOneBy(['name' => $productName]);
+
+            if ($existingProduct) {
+                return new JsonResponse(['error' => 'Product already exists'], Response::HTTP_BAD_REQUEST);
+            }
+
+            $product = $serializer->deserialize($request->getContent(), Product::class, 'json');
             $idFormat = $content['idFormat'] ?? -1;
-
             $product->setFormat($formatRepository->find($idFormat));
-
             $em->persist($product);
             $em->flush();
 
-            $jsonProduct = $serializer->serialize($product,'json', ['groups' => 'products']);
-
+            $jsonProduct = $serializer->serialize($product, 'json', ['groups' => 'products']);
             $location = $urlGenerator->generate('detailProduct', ['id' => $product->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
 
             return new JsonResponse($jsonProduct, Response::HTTP_CREATED, ["Location" => $location], true);
