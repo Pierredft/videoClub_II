@@ -47,6 +47,13 @@
     <label for="img" class="fw-bolder">Image:</label>
     <input type="text" class="form-control" id="img" formControlName="img" placeholder="https://musicart.xboxlive.com/7/67325100-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080">
   </div>
+  <div class="form-group mb-3">
+    <label for="idFormat" class="fw-bolder">Format:</label>
+    <select class="form-control" formControlName="idFormat" placeholder="Choississez un format">
+      <option value="" disabled selected>Choississez un format</option>
+      <option *ngFor="let format of formats" [value]="format.id">{{format.name}}</option>
+    </select>
+  </div>
   <div class="btnCenter">
   <button type="submit" class="btn btn-primary">Créer le film</button>
   </div>

@@ -3,11 +3,13 @@
 </div>
 
 @for (format of formats; track $index) {
-<ul class="list-group">
-  <li class="list-group-item">{{format.id}} : {{format.name}}
-    <a href="/updateFormat/{{format.id}}" class="btn btnUpdate mb-2">Modifier</a>
-    <button class="btn btnDelete" (click)="deleteFormat(format.id)">Supprimer</button>
-  </li>
-</ul>
+<div class="styleListe">
+  <ul class="list-group test">
+    <li class="list-group-item">{{format.id}} : {{format.name}}
+      <a href="/updateFormat/{{format.id}}" class="btn btnUpdate me-2">Modifier</a>
+      <button class="btn btnDelete" (click)="deleteFormat(format.id)">Supprimer</button>
+    </li>
+  </ul>
+</div>
 }
 

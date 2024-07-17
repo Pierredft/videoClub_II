@@ -1,0 +1,54 @@
+.btnDelete{
+  background-color: #ff0000;
+  color: white;
+}
+
+.btnDelete:hover{
+  background-color: #a10000;
+}
+
+.btnUpdate{
+  background-color: orange;
+  color: white;
+}
+
+.btnUpdate:hover{
+  background-color: rgb(164, 108, 2);
+}
+
+.btnAdd{
+  background-color: rgb(0, 193, 0);
+  color: white;
+  padding: 10px 40px;
+}
+
+.btnAdd:hover{
+  background-color: green;
+}
+
+.btnCenter{
+  display: flex;
+  justify-content: center;
+}
+
+.posButton{
+  display: flex;
+  flex-direction: column;
+}
+
+/* th{
+  text-align: center;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+} */
+
+.styleListe{
+  display: flex;
+  justify-content: center;
+}
+
+.test{
+  width: 80%;
+}

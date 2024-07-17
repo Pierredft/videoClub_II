@@ -1,4 +1,7 @@
-import { DatePipe, Time } from "@angular/common";
+interface Format {
+  id: number;
+  name: string;
+}
 
 export default interface Product {
   id: number;
@@ -10,4 +13,5 @@ export default interface Product {
   // duration: Date;
   img: string;
   popular: boolean;
+  format : Format;
 }

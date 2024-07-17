@@ -1,0 +1,17 @@
+.test{
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.font{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+.font2{
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
